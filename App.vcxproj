@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.props')" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7A4C3E92-8D11-4F2B-9A61-3B7D92C51E10}</ProjectGuid>
+    <Keyword>DirectXApp</Keyword>
+    <RootNamespace>XboxOTFM</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>16.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.19041.0</WindowsTargetPlatformMinVersion>
+    <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
+    <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
+    <AppxPackageExtension>.msix</AppxPackageExtension>
+    <GenerateAppInstallerFile>false</GenerateAppInstallerFile>
+    <AppxBundle>Never</AppxBundle>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ConformanceMode>true</ConformanceMode>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;WINAPI_FAMILY=WINAPI_FAMILY_APP;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;_SILENCE_ALL_CXX20_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <AdditionalDependencies>d3d12.lib;d3d11.lib;d2d1.lib;dwrite.lib;dxgi.lib;ws2_32.lib;iphlpapi.lib;windowscodecs.lib;xinputuap.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <ConformanceMode>true</ConformanceMode>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;WINAPI_FAMILY=WINAPI_FAMILY_APP;NOMINMAX;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;_SILENCE_ALL_CXX17_DEPRECATION_WARNINGS;_SILENCE_ALL_CXX20_DEPRECATION_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>d3d12.lib;d3d11.lib;d2d1.lib;dwrite.lib;dxgi.lib;ws2_32.lib;iphlpapi.lib;windowscodecs.lib;xinputuap.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Json.h" />
+    <ClInclude Include="src\ImageUtil.h" />
+    <ClInclude Include="src\Dataset.h" />
+    <ClInclude Include="src\StrokeCodec.h" />
+    <ClInclude Include="src\StrokeStore.h" />
+    <ClInclude Include="src\GpuCore.h" />
+    <ClInclude Include="src\Converter.h" />
+    <ClInclude Include="src\AppCore.h" />
+    <ClInclude Include="src\HttpServer.h" />
+    <ClInclude Include="src\WebApi.h" />
+    <ClInclude Include="src\WebHost.h" />
+    <ClInclude Include="src\WebUiAssets.h" />
+    <ClInclude Include="src\QrCode.h" />
+    <ClInclude Include="src\TvUi.h" />
+    <ClInclude Include="src\GamepadUI.h" />
+    <ClInclude Include="src\WebBridge.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\ImageUtil.cpp" />
+    <ClCompile Include="src\Dataset.cpp" />
+    <ClCompile Include="src\StrokeCodec.cpp" />
+    <ClCompile Include="src\StrokeStore.cpp" />
+    <ClCompile Include="src\GpuCore.cpp" />
+    <ClCompile Include="src\Converter.cpp" />
+    <ClCompile Include="src\AppCore.cpp" />
+    <ClCompile Include="src\HttpServer.cpp" />
+    <ClCompile Include="src\WebApi.cpp" />
+    <ClCompile Include="src\WebHost.cpp" />
+    <ClCompile Include="src\QrCode.cpp" />
+    <ClCompile Include="src\TvUi.cpp" />
+    <ClCompile Include="src\GamepadUI.cpp" />
+    <ClCompile Include="src\WebBridge.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Shaders\Strokes.hlsl" />
+    <None Include="Shaders\CSBlur.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSBackground.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSEdgeMap.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSErrorMap.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSScout.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSEvaluate.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSPick.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSNudge.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSCommit.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSPaintCard.cso"><DeploymentContent>true</DeploymentContent></None>
+    <None Include="Shaders\CSMeasure.cso"><DeploymentContent>true</DeploymentContent></None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\StoreLogo.png"><DeploymentContent>true</DeploymentContent></Image>
+    <Image Include="Assets\Square44x44Logo.png"><DeploymentContent>true</DeploymentContent></Image>
+    <Image Include="Assets\Square150x150Logo.png"><DeploymentContent>true</DeploymentContent></Image>
+    <Image Include="Assets\Wide310x150Logo.png"><DeploymentContent>true</DeploymentContent></Image>
+    <Image Include="Assets\SplashScreen.png"><DeploymentContent>true</DeploymentContent></Image>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Target Name="CompileStrokeShaders" BeforeTargets="ClCompile" Condition="!Exists('$(ProjectDir)Shaders\CSBlur.cso') Or !Exists('$(ProjectDir)Shaders\CSBackground.cso') Or !Exists('$(ProjectDir)Shaders\CSEdgeMap.cso') Or !Exists('$(ProjectDir)Shaders\CSErrorMap.cso') Or !Exists('$(ProjectDir)Shaders\CSScout.cso') Or !Exists('$(ProjectDir)Shaders\CSEvaluate.cso') Or !Exists('$(ProjectDir)Shaders\CSPick.cso') Or !Exists('$(ProjectDir)Shaders\CSNudge.cso') Or !Exists('$(ProjectDir)Shaders\CSCommit.cso') Or !Exists('$(ProjectDir)Shaders\CSPaintCard.cso') Or !Exists('$(ProjectDir)Shaders\CSMeasure.cso')">
+    <MakeDir Directories="$(ProjectDir)Shaders" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSBlur /Fo &quot;$(ProjectDir)Shaders\CSBlur.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSBlur.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSBackground /Fo &quot;$(ProjectDir)Shaders\CSBackground.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSBackground.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSEdgeMap /Fo &quot;$(ProjectDir)Shaders\CSEdgeMap.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSEdgeMap.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSErrorMap /Fo &quot;$(ProjectDir)Shaders\CSErrorMap.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSErrorMap.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSScout /Fo &quot;$(ProjectDir)Shaders\CSScout.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSScout.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSEvaluate /Fo &quot;$(ProjectDir)Shaders\CSEvaluate.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSEvaluate.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSPick /Fo &quot;$(ProjectDir)Shaders\CSPick.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSPick.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSNudge /Fo &quot;$(ProjectDir)Shaders\CSNudge.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSNudge.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSCommit /Fo &quot;$(ProjectDir)Shaders\CSCommit.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSCommit.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSPaintCard /Fo &quot;$(ProjectDir)Shaders\CSPaintCard.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSPaintCard.cso')" />
+    <Exec Command="&quot;$(WindowsSdkDir)bin\$(TargetPlatformVersion)\x64\fxc.exe&quot; /nologo /T cs_5_1 /E CSMeasure /Fo &quot;$(ProjectDir)Shaders\CSMeasure.cso&quot; &quot;$(ProjectDir)src\Shaders\Strokes.hlsl&quot;" Condition="!Exists('$(ProjectDir)Shaders\CSMeasure.cso')" />
+  </Target>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.targets')" />
+</Project>
